@@ -26,8 +26,8 @@ export default [
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat['jsx-runtime'],
-  eslintConfigPrettier,
   ...tseslint.configs.recommended,
+  eslintConfigPrettier,
   {
     rules: {
       // Add custom rulesets in here
