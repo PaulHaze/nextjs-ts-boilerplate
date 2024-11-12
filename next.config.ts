@@ -1,11 +1,19 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  sassOptions: {
-    silenceDeprecations: ['legacy-js-api'],
+  experimental: {
+    turbo: {
+      rules: {
+        '*.scss': {
+          loaders: ['sass-loader'],
+          as: '*.css',
+        },
+      },
+    },
   },
-
-  /* config options here */
+  // sassOptions: {
+  //   silenceDeprecations: ['legacy-js-api'],
+  // },
 };
 
 export default nextConfig;
