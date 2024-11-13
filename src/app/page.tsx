@@ -1,4 +1,4 @@
-import { ThemeToggle } from '@/components/ui';
+import { ThemeToggle, ThemeToggler } from '@/components/ui';
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center pt-10">
         <h1>TW/DaisyUI Next Starter</h1>
+        <ThemeToggler />
       </div>
     </div>
   );
