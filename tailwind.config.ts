@@ -3,7 +3,7 @@ import plugin from 'tailwindcss/plugin';
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,json}'],
-  darkMode: 'selector',
+  darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
       fontSize: {
@@ -67,8 +67,7 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
