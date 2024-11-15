@@ -12,15 +12,10 @@ export function ThemeToggler() {
         onClick={toggleTheme}
         aria-label="auto"
         aria-live="polite"
-        className="rounded px-5 py-3"
+        className="theme-toggle pointer touch-manipulation rounded-full"
       >
-        <svg
-          className="sun-and-moon text-stone-800 dark:text-stone-200"
-          aria-hidden="true"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
+        <svg className="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+          {/* SUN */}
           <circle
             className="sun"
             cx="12"
@@ -39,6 +34,12 @@ export function ThemeToggler() {
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
           </g>
+
+          {/* MOON */}
+          <mask className="moon" id="moon-mask">
+            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+            <circle cx="24" cy="10" r="6" fill="black" />
+          </mask>
         </svg>
       </button>
       {/* <div className="h-20 w-20">
