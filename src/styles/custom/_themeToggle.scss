@@ -1,7 +1,7 @@
 .theme-toggle {
   -webkit-tap-highlight-color: transparent;
   outline-offset: 5px;
-  @apply h-12 w-12 transition-colors hover:text-stone-700 dark:text-white/90 dark:hover:text-white/70;
+  @apply h-12 w-12 transition-colors duration-300 hover:text-stone-700 dark:text-white dark:hover:text-white/70;
 
   /* make button bigger for touchscreens */
   @media (hover: none) {
@@ -16,7 +16,32 @@
 }
 
 .sun-and-moon {
+  /* .sun-beams {
+    @apply stroke-red-500;
+  } */
+
   :is(.moon, .sun, .sun-beams) {
     transform-origin: center center;
+    @apply transition-all duration-500;
+  }
+  :is(.moon, .sun) {
+  }
+
+  [data-theme='dark'] & {
+    .sun {
+      transform: scale(1.75);
+    }
+    .sun-beams {
+      transform: rotate(-45deg) scale(0);
+    }
+    .moon {
+      circle {
+        /* transform: translateX(-8px); */
+        @supports (cx: 1px) {
+          transform: translateX(0);
+          cx: 16px;
+        }
+      }
+    }
   }
 }
