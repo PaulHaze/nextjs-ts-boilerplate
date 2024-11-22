@@ -3,7 +3,7 @@ import plugin from 'tailwindcss/plugin';
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,json}'],
-  darkMode: ['selector', '[data-theme="dark"]'],
+  darkMode: ['selector'],
   theme: {
     extend: {
       fontSize: {
