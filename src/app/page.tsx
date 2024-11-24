@@ -9,7 +9,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center pt-10">
-        <h1 className="">TW/DaisyUI Next Starter</h1>
+        <h1 className="">Shadcn/UI Next Starter</h1>
       </div>
     </div>
   );
