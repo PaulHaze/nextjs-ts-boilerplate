@@ -10,6 +10,7 @@ export default [
   // apply recommended rules to JS files
   {
     files: ['**/*.ts', '**/*.tsx'],
+    ignores: ['**/*.test.ts', '**/*.test.tsx'],
   },
   {
     languageOptions: {
@@ -52,6 +53,7 @@ export default [
   },
   {
     // add the custom files for the custom rules
+    // files: [];
     rules: {
       // Add custom rulesets in here
     },
