@@ -28,9 +28,12 @@ export default [
   pluginReact.configs.flat['jsx-runtime'],
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
+
+  // Add custom rulesets in here
   {
+    files: ['**/components/ui/*.tsx'],
     rules: {
-      // Add custom rulesets in here
+      'react/prop-types': ['warn', { ignore: ['className'] }],
     },
   },
   {
