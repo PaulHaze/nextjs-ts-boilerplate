@@ -29,6 +29,8 @@ export default [
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
+    // add the custom files for the custom rules
+    files: [],
     rules: {
       // Add custom rulesets in here
     },

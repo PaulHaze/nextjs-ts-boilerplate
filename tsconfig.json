@@ -31,9 +31,11 @@
       ],
     }
   },
-  "typeRoots": [
+  "types": [
     "./node_modules/@types",
-    "./types"
+    "./types",
+    "vitest/globals",
+    "vitest/jsdom"
   ],
   "include": [
     "next-env.d.ts",
@@ -41,7 +43,8 @@
     "types/**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "vitest.config.mts"
   ],
   "exclude": [
     "node_modules"
