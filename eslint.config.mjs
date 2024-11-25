@@ -33,7 +33,7 @@ export default [
   {
     files: ['**/components/ui/*.tsx'],
     rules: {
-      'react/prop-types': ['warn', { ignore: ['className'] }],
+      'react/prop-types': off,
     },
   },
   {
