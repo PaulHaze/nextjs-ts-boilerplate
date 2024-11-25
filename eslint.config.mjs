@@ -7,7 +7,6 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 const baseConfig = {
   name: 'Base Configuration',
-  // Base configuration
   languageOptions: {
     ecmaVersion: 'latest',
     globals: {
