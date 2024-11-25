@@ -1,15 +1,22 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import eslint from '@eslint/js';
 import nextPlugin from '@next/eslint-plugin-next';
-import eslintConfigPrettier from 'eslint-config-prettier';
-import pluginReact from 'eslint-plugin-react';
 import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
-// Base configuration for all files
 const baseConfig = {
+  name: 'Base Configuration',
+  // Base configuration
   languageOptions: {
     ecmaVersion: 'latest',
-    globals: { ...globals.browser, ...globals.node },
+    globals: {
+      ...globals.browser,
+      ...globals.node,
+    },
+    parserOptions: {
+      project: './tsconfig.json',
+    },
   },
   settings: {
     react: {
@@ -18,14 +25,18 @@ const baseConfig = {
   },
 };
 
-// TypeScript configuration
 const tsConfig = {
-  ...tseslint.configs.recommended,
+  name: 'Typescript Config',
   files: ['**/*.{ts,tsx}'],
+  ignores: ['e2e/**', '**/*.spec.{ts,tsx}', '**/*.test.{ts,tsx}'],
+  extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
+  // custom rules
+  rules: {},
 };
 
-// Next.js configuration
-const nextConfig = {
+const nextPluginConfig = {
+  name: 'Next Plugin Config',
+  files: ['**/*.{ts,tsx}'],
   plugins: {
     '@next/next': nextPlugin,
   },
@@ -36,26 +47,23 @@ const nextConfig = {
   },
 };
 
-// Custom rules configuration
-const customRulesConfig = {
-  rules: {
-    // Add custom rules here
-  },
-};
-
-// Global ignores
-const ignoresConfig = {
-  ignores: ['.next/*', 'node_modules/*', 'dist/*', 'build/*'],
-};
-
-export default [
+export default tseslint.config(
+  // Use tseslint.config instead of direct array export
   baseConfig,
   tsConfig,
-  pluginJs.configs.recommended,
+
+  // React plugins
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat['jsx-runtime'],
-  nextConfig,
-  customRulesConfig,
+
+  // Next.js plugin
+  nextPluginConfig,
+
+  // Prettier and additional configs
   eslintConfigPrettier,
-  ignoresConfig,
-];
+
+  // Global Ignore
+  {
+    ignores: ['.next/*', 'node_modules/*', 'dist/*', 'build/*'],
+  },
+);
