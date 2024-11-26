@@ -1,19 +1,23 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import eslint from '@eslint/js';
 import nextPlugin from '@next/eslint-plugin-next';
 import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import pluginReact from 'eslint-plugin-react';
 import vitest from '@vitest/eslint-plugin';
 import playwright from 'eslint-plugin-playwright';
-import tseslint from 'typescript-eslint';
 
-// Base configuration for all files
 const baseConfig = {
+  name: 'Base Configuration',
   languageOptions: {
     ecmaVersion: 'latest',
-    globals: { ...globals.browser, ...globals.node },
+    globals: {
+      ...globals.browser,
+      ...globals.node,
+    },
+    parserOptions: {
+      project: './tsconfig.json',
+    },
   },
   settings: {
     react: {
@@ -22,14 +26,18 @@ const baseConfig = {
   },
 };
 
-// TypeScript configuration
 const tsConfig = {
-  ...tseslint.configs.recommended,
+  name: 'Typescript Config',
   files: ['**/*.{ts,tsx}'],
+  ignores: ['e2e/**', '**/*.spec.{ts,tsx}', '**/*.test.{ts,tsx}'],
+  extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
+  // custom rules
+  rules: {},
 };
 
-// Next.js configuration
-const nextConfig = {
+const nextPluginConfig = {
+  name: 'Next Plugin Config',
+  files: ['**/*.{ts,tsx}'],
   plugins: {
     '@next/next': nextPlugin,
   },
@@ -42,47 +50,47 @@ const nextConfig = {
 
 // Vitest configuration
 const vitestConfig = {
+  name: 'Vitest Config',
   files: ['**/*.test.{ts,tsx}'],
   plugins: {
     vitest,
   },
   rules: {
     ...vitest.configs.recommended.rules,
-    'vitest/max-nested-describe': ['error', { max: 3 }],
   },
 };
 
 // Playwright configuration
 const playwrightConfig = {
-  ...playwright.configs['flat/recommended'],
+  name: 'Playwright Config',
   files: ['e2e/**', '**/*.spec.{ts,tsx}'],
+  ...playwright.configs['flat/recommended'],
   rules: {
     ...playwright.configs['flat/recommended'].rules,
   },
 };
 
-// Custom rules configuration
-const customRulesConfig = {
-  rules: {
-    // Add custom rules here
-  },
-};
-
-// Global ignores
-const ignoresConfig = {
-  ignores: ['.next/*', 'node_modules/*', 'dist/*', 'build/*'],
-};
-
-export default [
+export default tseslint.config(
+  // Use tseslint.config instead of direct array export
   baseConfig,
   tsConfig,
-  pluginJs.configs.recommended,
+
+  // React plugins
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat['jsx-runtime'],
-  nextConfig,
-  vitestConfig,
+
+  // Next.js plugin
+  nextPluginConfig,
+
+  // Testing plugins
   playwrightConfig,
-  customRulesConfig,
+  vitestConfig,
+
+  // Prettier and additional configs
   eslintConfigPrettier,
-  ignoresConfig,
-];
+
+  // Global Ignore
+  {
+    ignores: ['.next/*', 'node_modules/*', 'dist/*', 'build/*'],
+  },
+);
