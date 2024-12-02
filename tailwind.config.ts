@@ -1,10 +1,14 @@
 import type { Config } from 'tailwindcss';
+import typographyPlugin from '@tailwindcss/typography';
+import daisyui from 'daisyui';
 import plugin from 'tailwindcss/plugin';
 import tailwindAnimate from 'tailwindcss-animate';
 
+import daisyuiColorObj from 'daisyui/src/theming';
+
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,json}'],
-  darkMode: ['selector'],
+  darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
       borderRadius: {
@@ -13,38 +17,35 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        border: daisyuiColorObj['base-content'],
+        input: daisyuiColorObj['base-content'],
+        ring: daisyuiColorObj['base-content'],
+        background: daisyuiColorObj['base-100'],
+        foreground: daisyuiColorObj['base-content'],
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: daisyuiColorObj['primary'],
+          foreground: daisyuiColorObj['primary-content'],
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: daisyuiColorObj['secondary'],
+          foreground: daisyuiColorObj['secondary-content'],
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          DEFAULT: daisyuiColorObj['error'],
+          foreground: daisyuiColorObj['error-content'],
         },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
+
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: daisyuiColorObj['accent'],
+          foreground: daisyuiColorObj['accent-content'],
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: daisyuiColorObj['base-100'],
+          foreground: daisyuiColorObj['base-content'],
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: daisyuiColorObj['base-100'],
+          foreground: daisyuiColorObj['base-content'],
         },
       },
       screens: {
@@ -91,7 +92,8 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       keyframes: {
         'accordion-down': {
@@ -111,6 +113,8 @@ export default {
   },
   plugins: [
     tailwindAnimate,
+    typographyPlugin,
+    daisyui,
     plugin(({ addUtilities, matchUtilities, theme }) => {
       addUtilities({
         '.flex-center': {
@@ -172,4 +176,101 @@ export default {
       );
     }),
   ],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          primary: '#5155c3',
+          secondary: '#9b9cf7',
+          accent: '#bd531e',
+          neutral: '#929293',
+
+          'base-100': 'oklch(99.72% 0.0028 84.56)',
+          'base-200': 'oklch(97.82% 0.0034 247.86)',
+          'base-300': 'oklch(95.15% 0.0046 258.32)',
+          '--base-400': '90.94% 0.0058 264.53',
+          '--primary-muted': '96% 0.0187 289.33',
+          '--light': '62.64% 0.0254 266.79',
+          '--muted': '48.61% 0.0337 267.99',
+          // 'base-content': '#161616',
+          // '--base-content': daisyuiColorObj['base-content'],
+
+          /* 
+					*EXAMPLE - ESSENTIAL
+					"primary": "#a991f7",
+          "secondary": "#f6d860",
+          "accent": "#37cdbe",
+          "neutral": "#3d4451",
+          "base-100": "#ffffff",
+
+					*EXAMPLE - FULL SET
+					* These extra colours are set automatically based on the colours chosen above
+					* But they can be overriden
+					primary: '#a991f7',
+					"primary-content": "#d0e3ff", - Colour of text in 'Primary'
+					secondary: '#f6d860'
+					"secondary-content": "#0a0900", - Colour of text in 'Secondary'
+					accent: '#37cdbe'
+					"accent-content": "#00050d",- Colour of text in 'Accent'
+					neutral: '#828282'
+					"neutral-content": "#d2cdd2", - Colour of text in 'Neutral
+					'base-100': '#fefefe'
+					"base-200": "#dbdbdb", - Slightly darker shade of base-100
+					"base-300": "#bbbbbb", - Even darker shade of base-100
+					"base-content": "#161616", - Contrasting colour for text on base-100
+
+					* Additional colours to be added if needed
+					"info": "#00b1ff",
+					"info-content": "#000c16",
+					"success": "#85ee00",
+					"success-content": "#061400",
+					"warning": "#c28700",
+					"warning-content": "#0e0600",
+					"error": "#ff768e",
+					"error-content": "#160507",
+
+
+					* Additional CSS variables used
+          "--rounded-box": "1rem", // border radius rounded-box utility class, used in card and other large boxes
+          "--rounded-btn": "0.5rem", // border radius rounded-btn utility class, used in buttons and similar element
+          "--rounded-badge": "1.9rem", // border radius rounded-badge utility class, used in badges and similar
+          "--animation-btn": "0.25s", // duration of animation when you click on button
+          "--animation-input": "0.2s", // duration of animation for inputs like checkbox, toggle, radio, etc
+          "--btn-focus-scale": "0.95", // scale transform of button when you focus on it
+          "--border-btn": "1px", // border width of buttons
+          "--tab-border": "1px", // border width of tabs
+          "--tab-radius": "0.5rem", // border radius of tabs */
+        },
+      },
+      {
+        dark: {
+          primary: '#a64ed0',
+          '--primary-muted': '74.78% 0.0609 321.27',
+          'primary-content': '#ddebff',
+          secondary: '#d2aef9',
+          accent: '#fea66a',
+          neutral: '#272831',
+          'base-100': '#07071f',
+          'base-200': '#10102b',
+          'base-300': '#181a33',
+
+          '--base-400': '25.84% 0.0592 278.81',
+          '--light': '75.75% 0.0334 275.86',
+          '--muted': '61.13% 0.0351 277.53',
+          //* Custom colour variables can also be added.
+          //* Use the OKLCH colour space
+          //* Add the variable to Tailwind
+          // '--primary-muted-oklch': '83.24% 0.029 231.52',
+        },
+      },
+    ],
+    // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"],
+    darkTheme: 'dark', // name of one of the included themes for dark mode
+    base: true, // applies background color and foreground color for root element by default
+    styled: true, // include daisyUI colors and design decisions for all components
+    utils: true, // adds responsive and modifier utility classes
+    prefix: '', // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
+    logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
+    themeRoot: ':root', // The element that receives theme color CSS variables
+  },
 } satisfies Config;
