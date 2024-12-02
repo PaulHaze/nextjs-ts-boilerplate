@@ -56,6 +56,14 @@ export default tseslint.config(
   pluginReact.configs.flat['jsx-runtime'],
   nextLint,
 
+  // custom rules
+  {
+    files: ['**/components/ui/*.tsx'],
+    rules: {
+      'react/prop-types': ['error', { ignore: ['className'] }],
+    },
+  },
+
   // Prettier and additional configs
   eslintConfigPrettier,
 
