@@ -38,11 +38,12 @@
   ],
   "include": [
     "next-env.d.ts",
-    "src/types/eslint-plugin-next.d.ts",
-    "src/types/**/*.d.ts",
+    // "src/types/eslint-plugin-next.d.ts",
+    // "src/types/**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "next.config.mjs"
   ],
   "exclude": [
     "node_modules"
