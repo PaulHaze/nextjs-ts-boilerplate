@@ -26,7 +26,7 @@ const baseConfig = {
 
 const tsConfig = {
   name: 'Typescript Config',
-  files: ['**/*.{ts,tsx}'],
+  files: ['**/*.{ts,tsx,mjs}'],
   ignores: ['e2e/**', '**/*.spec.{ts,tsx}', '**/*.test.{ts,tsx}'],
   extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
   // custom rules
@@ -38,7 +38,7 @@ const nextLint = {
   plugins: {
     '@next/next': pluginNext,
   },
-  files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+  files: ['**/*.{js,mjs,cjs,ts,jsx,tsx,mjs}'],
   rules: {
     ...pluginNext.configs.recommended.rules,
     ...pluginNext.configs['core-web-vitals'].rules,
@@ -62,5 +62,5 @@ export default tseslint.config(
   // Global Ignore
   {
     ignores: ['.next/*', 'node_modules/*', 'dist/*', 'build/*'],
-  },
+  }
 );

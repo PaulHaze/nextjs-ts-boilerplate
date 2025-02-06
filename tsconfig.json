@@ -42,6 +42,7 @@
     // "src/types/**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mjs",
     ".next/types/**/*.ts",
     "next.config.mjs"
   ],
