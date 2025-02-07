@@ -38,8 +38,6 @@
   ],
   "include": [
     "next-env.d.ts",
-    // "src/types/eslint-plugin-next.d.ts",
-    // "src/types/**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.mjs",

@@ -28,7 +28,7 @@ const tsConfig = {
   name: 'Typescript Config',
   files: ['**/*.{ts,tsx,mjs}'],
   ignores: ['e2e/**', '**/*.spec.{ts,tsx}', '**/*.test.{ts,tsx}'],
-  extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
+  extends: [eslint.configs.recommended, ...tseslint4.configs.recommended],
   // custom rules
   rules: {},
 };
