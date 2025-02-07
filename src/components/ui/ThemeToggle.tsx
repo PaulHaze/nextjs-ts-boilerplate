@@ -7,7 +7,12 @@ export function ThemeToggle() {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
   return (
-    <button onClick={toggleTheme} aria-label="auto" aria-live="polite" className="theme-toggle">
+    <button
+      onClick={toggleTheme}
+      aria-label="auto"
+      aria-live="polite"
+      className="theme-toggle h-5 w-5"
+    >
       <svg className="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
         {/* SUN */}
         <circle className="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />

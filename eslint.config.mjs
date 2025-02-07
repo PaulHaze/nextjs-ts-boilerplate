@@ -1,6 +1,6 @@
 import globals from 'globals';
 import eslint from '@eslint/js';
-import nextPlugin from '@next/eslint-plugin-next';
+import pluginNext from '@next/eslint-plugin-next';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import pluginReact from 'eslint-plugin-react';
@@ -28,22 +28,22 @@ const baseConfig = {
 
 const tsConfig = {
   name: 'Typescript Config',
-  files: ['**/*.{ts,tsx}'],
+  files: ['**/*.{ts,tsx,mjs}'],
   ignores: ['e2e/**', '**/*.spec.{ts,tsx}', '**/*.test.{ts,tsx}'],
   extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
   // custom rules
   rules: {},
 };
 
-const nextPluginConfig = {
-  name: 'Next Plugin Config',
-  files: ['**/*.{ts,tsx}'],
+const nextLint = {
+  name: 'NextJs Plugin Config',
   plugins: {
-    '@next/next': nextPlugin,
+    '@next/next': pluginNext,
   },
+  files: ['**/*.{js,mjs,cjs,ts,jsx,tsx,mjs}'],
   rules: {
-    ...nextPlugin.configs.recommended.rules,
-    ...nextPlugin.configs['core-web-vitals'].rules,
+    ...pluginNext.configs.recommended.rules,
+    ...pluginNext.configs['core-web-vitals'].rules,
     '@next/next/no-img-element': 'off',
   },
 };
@@ -78,9 +78,7 @@ export default tseslint.config(
   // React plugins
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat['jsx-runtime'],
-
-  // Next.js plugin
-  nextPluginConfig,
+  nextLint,
 
   // Testing plugins
   playwrightConfig,
@@ -92,5 +90,5 @@ export default tseslint.config(
   // Global Ignore
   {
     ignores: ['.next/*', 'node_modules/*', 'dist/*', 'build/*'],
-  },
+  }
 );

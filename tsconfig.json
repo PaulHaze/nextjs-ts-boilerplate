@@ -35,16 +35,17 @@
     "./node_modules/@types",
     "./types",
     "vitest/globals",
-    "vitest/jsdom"
+    "vitest/jsdom",
+    "./src/types"
   ],
   "include": [
     "next-env.d.ts",
-    "types/eslint-plugin-next.d.ts",
-    "types/**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mjs",
     ".next/types/**/*.ts",
-    "vitest.config.mts"
+    "vitest.config.mts",
+    "next.config.mjs"
   ],
   "exclude": [
     "node_modules"
