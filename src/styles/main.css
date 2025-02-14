@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
+@variant dark (&:where([data-theme="dark"], .dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
 /* CUSTOM STYLES */
 @import './custom/theme-toggle.css';
@@ -86,8 +87,6 @@
 
 @plugin 'tailwindcss-animate';
 
-@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-
 @theme inline {
   --font-sans: var(--font-geist-sans);
 
@@ -108,14 +107,6 @@
   --spacing-slg: 64rem;
   --spacing-sxl: 80rem;
   --spacing-s2xl: 96rem;
-
-  /* 
-  --container-sxs: 29rem;
-  --container-ssm: 40rem;
-  --container-smd: 48rem;
-  --container-slg: 64rem;
-  --container-sxl: 80rem;
-  --container-s2xl: 96rem; */
 
   --breakpoint-xs: 29rem;
 
