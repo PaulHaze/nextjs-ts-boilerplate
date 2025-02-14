@@ -46,6 +46,9 @@
 }
 
 @layer base {
+  body {
+    @apply bg-base text-base-content;
+  }
   h1,
   h2,
   h3,

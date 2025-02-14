@@ -4,6 +4,17 @@ import localFont from 'next/font/local';
 import { ThemeToggle } from '@/components/ui';
 import '@/styles/main.css';
 
+//* LEFT IN AS EXAMPLE OF HOW TO USE GOOGLE FONTS
+// import { Nabla } from 'next/font/google';
+// const nabla = Nabla({
+//   subsets: ['latin'],
+//   variable: '--font-nabla',
+//   weight: '400',
+// });
+
+//* INCLUDE THIS IN <body>
+// ${nabla.variable}
+
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
