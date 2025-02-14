@@ -6,16 +6,12 @@
 @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  --bg-base-100: var(--color-gray-50);
-  --bg-base-200: var(--color-gray-100);
-  --bg-base-300: var(--color-gray-200);
-  --primary: oklch(43.15% 0.2369 270.16);
+  --bg-base: var(--color-slate-50);
+  --content-base: var(--color-slate-900);
 }
 :root[data-theme='dark'] {
-  --bg-base-100: var(--color-gray-900);
-  --bg-base-200: var(--color-gray-800);
-  --bg-base-300: var(--color-gray-700);
-  --primary: oklch(64.14% 0.192 274.32);
+  --bg-base: var(--color-slate-900);
+  --content-base: var(--color-slate-50);
 }
 
 @theme inline {
@@ -26,40 +22,30 @@
   --font-techno: var(--font-nabla);
 */
 
+  --color-base: var(--bg-base);
+  --color-base-content: var(--content-base);
+
+  /* Add a small breakpoint for mobile */
+  --breakpoint-xs: 29rem;
+
   --text-6xl: 4rem;
 
+  /* Custom padding settings */
   --spacing-psm: 1rem;
   --spacing-pmd: 2rem;
   --spacing-plg: 4rem;
   --spacing-pxl: 8rem;
+
+  /* Custom screen size settings */
   --spacing-sxs: 29rem;
   --spacing-ssm: 40rem;
   --spacing-smd: 48rem;
   --spacing-slg: 64rem;
   --spacing-sxl: 80rem;
   --spacing-s2xl: 96rem;
-
-  /* 
-  --container-sxs: 29rem;
-  --container-ssm: 40rem;
-  --container-smd: 48rem;
-  --container-slg: 64rem;
-  --container-sxl: 80rem;
-  --container-s2xl: 96rem; */
-
-  --breakpoint-xs: 29rem;
-
-  --color-base: var(--bg-base-100);
-  --color-base-100: var(--bg-base-100);
-  --color-base-200: var(--bg-base-200);
-  --color-base-300: var(--bg-base-300);
-  --color-primary: var(--primary);
 }
 
 @layer base {
-  body {
-    @apply bg-base;
-  }
   h1,
   h2,
   h3,

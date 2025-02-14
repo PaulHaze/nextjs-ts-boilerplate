@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import localFont from 'next/font/local';
 import { ThemeToggle } from '@/components/ui';
-import '@/styles/main.scss';
+import '@/styles/main.css';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -28,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ThemeProvider>
           <div className="relative">
             <div className="absolute right-2 top-3">
