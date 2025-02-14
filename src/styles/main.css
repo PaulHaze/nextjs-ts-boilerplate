@@ -24,8 +24,8 @@
   --destructive: var(--color-error);
   --destructive-foreground: var(--color-error-content);
   --border: var(--color-border);
-  --input: hsl(240 5.9% 90%);
-  --ring: hsl(240 10% 3.9%);
+  --input: var(--color-input);
+  --ring: var(--color-base-content);
   --radius: 0.6rem;
 }
 
@@ -152,6 +152,11 @@
   --color-error: oklch(82.418% 0.099 33.756);
   --color-error-content: oklch(16.483% 0.019 33.756);
   --color-border: color-mix(in oklch, var(--color-base-300) 70%, white 30%);
+  --color-input: color-mix(
+    in oklch,
+    currentColor 10%,
+    var(--color-base-300) 50%
+  );
   --radius-selector: 1rem;
   --radius-field: 0.5rem;
   --radius-box: 1rem;
@@ -189,6 +194,11 @@
   --color-error: oklch(80% 0.114 19.571);
   --color-error-content: oklch(50% 0.213 27.518);
   --color-border: color-mix(in oklch, var(--color-base-300) 70%, black 30%);
+  --color-input: color-mix(
+    in oklch,
+    currentColor 10%,
+    var(--color-base-100) 50%
+  );
   --radius-selector: 0.5rem;
   --radius-field: 0.5rem;
   --radius-box: 0.5rem;
