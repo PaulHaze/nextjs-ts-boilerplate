@@ -1,11 +1,9 @@
-/* @postcss */
-
 @import 'tailwindcss';
 
 /* CUSTOM STYLES */
 @import './custom/theme-toggle.css';
 
-@variant dark (&:where([data-theme="dark"], .dark *));
+@variant dark (&:where([data-theme='dark'], .dark *));
 
 /* Baseline Shadcn Variables */
 :root {
@@ -15,48 +13,21 @@
   --card-foreground: var(--color-base-content);
   --popover: var(--color-base-100);
   --popover-foreground: var(--color-base-content);
-  --primary: hsl(240 5.9% 10%);
-  --primary-foreground: hsl(0 0% 98%);
-  --secondary: hsl(240 4.8% 95.9%);
-  --secondary-foreground: hsl(240 5.9% 10%);
-  --muted: hsl(240 4.8% 95.9%);
-  --muted-foreground: hsl(240 3.8% 46.1%);
-  --accent: hsl(240 4.8% 95.9%);
-  --accent-foreground: hsl(240 5.9% 10%);
-  --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(240 5.9% 90%);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-content);
+  --secondary: var(--color-secondary);
+  --secondary-foreground: var(--color-secondary-content);
+  --muted: var(--color-muted);
+  --muted-foreground: var(--color-muted-content);
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-accent-content);
+  --destructive: var(--color-error);
+  --destructive-foreground: var(--color-error-content);
+  --border: var(--color-border);
   --input: hsl(240 5.9% 90%);
   --ring: hsl(240 10% 3.9%);
   --radius: 0.6rem;
 }
-
-/* .dark {
-  --background: var(--color-base-300);
-  --foreground: hsl(0 0% 98%);
-  --card: hsl(240 10% 3.9%);
-  --card-foreground: hsl(0 0% 98%);
-  --popover: hsl(240 10% 3.9%);
-  --popover-foreground: hsl(0 0% 98%);
-  --primary: hsl(0 0% 98%);
-  --primary-foreground: hsl(240 5.9% 10%);
-  --secondary: hsl(240 3.7% 15.9%);
-  --secondary-foreground: hsl(0 0% 98%);
-  --muted: hsl(240 3.7% 15.9%);
-  --muted-foreground: hsl(240 5% 64.9%);
-  --accent: hsl(240 3.7% 15.9%);
-  --accent-foreground: hsl(0 0% 98%);
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(240 3.7% 15.9%);
-  --input: hsl(240 3.7% 15.9%);
-  --ring: hsl(240 4.9% 83.9%);
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
-} */
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
@@ -148,16 +119,14 @@
 }
 
 /* Plugins */
-@plugin 'tailwindcss-animate';
-
-@plugin "daisyui" {
+@plugin 'daisyui' {
   root: ':root';
   include: button;
   logs: true;
 }
 
 /* Every dark theme color for easy customization */
-@plugin "daisyui/theme" {
+@plugin 'daisyui/theme' {
   name: 'dark';
   default: false;
   prefersdark: true;
@@ -182,6 +151,7 @@
   --color-warning-content: oklch(17.232% 0.028 94.818);
   --color-error: oklch(82.418% 0.099 33.756);
   --color-error-content: oklch(16.483% 0.019 33.756);
+  --color-border: color-mix(in oklch, var(--color-base-300) 70%, white 30%);
   --radius-selector: 1rem;
   --radius-field: 0.5rem;
   --radius-box: 1rem;
@@ -193,7 +163,7 @@
 }
 
 /* Every light theme color for easy customization */
-@plugin "daisyui/theme" {
+@plugin 'daisyui/theme' {
   name: 'light';
   default: false;
   prefersdark: false;
@@ -218,6 +188,7 @@
   --color-warning-content: oklch(55% 0.195 38.402);
   --color-error: oklch(80% 0.114 19.571);
   --color-error-content: oklch(50% 0.213 27.518);
+  --color-border: color-mix(in oklch, var(--color-base-300) 70%, black 30%);
   --radius-selector: 0.5rem;
   --radius-field: 0.5rem;
   --radius-box: 0.5rem;
