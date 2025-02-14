@@ -4,9 +4,7 @@
 @import './custom/theme-toggle.css';
 
 /* Plugins */
-@plugin 'daisyui';
-
-@plugin 'daisyui' {
+@plugin "daisyui" {
   root: ':root';
   include: button;
   logs: true;
@@ -49,7 +47,7 @@
 }
 
 /* Every light theme color for easy customization */
-@plugin 'daisyui/theme' {
+@plugin "daisyui/theme" {
   name: 'light';
   default: false;
   prefersdark: false;
@@ -84,7 +82,7 @@
   --noise: 0;
 }
 
-@variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
