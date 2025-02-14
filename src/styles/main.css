@@ -3,7 +3,7 @@
 /* CUSTOM STYLES */
 @import './custom/theme-toggle.css';
 
-@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@variant dark (&:where([data-theme="dark"] *));
 
 :root {
   --bg-base: var(--color-slate-50);
