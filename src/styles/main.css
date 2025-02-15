@@ -64,6 +64,30 @@
   h5 {
     @apply text-xl;
   }
+  .bg-primary * {
+    @apply text-primary-content;
+  }
+  .bg-secondary * {
+    @apply text-secondary-content;
+  }
+  .bg-accent * {
+    @apply text-accent-content;
+  }
+  .bg-neutral * {
+    @apply text-neutral-content;
+  }
+  .bg-info * {
+    @apply text-info-content;
+  }
+  .bg-success * {
+    @apply text-success-content;
+  }
+  .bg-warning * {
+    @apply text-warning-content;
+  }
+  .bg-error * {
+    @apply text-error-content;
+  }
 }
 @utility bb {
   @apply border border-red-600 sm:border-blue-600 md:border-green-600 lg:border-indigo-600 xl:border-pink-600;
