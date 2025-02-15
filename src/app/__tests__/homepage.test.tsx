@@ -7,7 +7,7 @@ test('Page', () => {
   expect(
     screen.getByRole('heading', {
       level: 1,
-      name: 'TW/DaisyUI Next Starter',
+      name: 'TW/DaisyUI/ShadCN Next Starter',
     }),
   ).toBeDefined();
 });

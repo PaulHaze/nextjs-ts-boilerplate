@@ -10,8 +10,6 @@ export default defineConfig({
     // ['**/*.{test,spec}.?(c|m)[jt]s?(x)'] <- default vite settings
     include: ['src/**/?(*.)(test).[jt]s?(x)'],
 
-    // all tests in with .tsx extenstion will run in jsdom
-    environmentMatchGlobs: [['**/*.test.tsx', 'jsdom']],
     alias: {
       '@/': new URL('./src/', import.meta.url).pathname,
     },
