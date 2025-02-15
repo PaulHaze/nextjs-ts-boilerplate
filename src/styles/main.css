@@ -1,0 +1,234 @@
+@import 'tailwindcss';
+
+/* CUSTOM STYLES */
+@import './custom/theme-toggle.css';
+
+@variant dark (&:where([data-theme='dark'], .dark *));
+
+/* Baseline Shadcn Variables */
+:root {
+  --background: var(--color-base-100);
+  --foreground: var(--color-base-content);
+  --card: var(--color-base-100);
+  --card-foreground: var(--color-base-content);
+  --popover: var(--color-base-100);
+  --popover-foreground: var(--color-base-content);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-content);
+  --secondary: var(--color-secondary);
+  --secondary-foreground: var(--color-secondary-content);
+  --muted: var(--color-muted);
+  --muted-foreground: var(--color-muted-content);
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-accent-content);
+  --destructive: var(--color-error);
+  --destructive-foreground: var(--color-error-content);
+  --border: var(--color-border);
+  --input: var(--color-input);
+  --ring: var(--color-base-content);
+  --radius: 0.6rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+
+  /* 
+  ADD THIS FOR CUSTOM FONT USE
+  --font-techno: var(--font-nabla);
+ */
+
+  --text-6xl: 4rem;
+
+  --spacing-psm: 1rem;
+  --spacing-pmd: 2rem;
+  --spacing-plg: 4rem;
+  --spacing-pxl: 8rem;
+  --spacing-sxs: 29rem;
+  --spacing-ssm: 40rem;
+  --spacing-smd: 48rem;
+  --spacing-slg: 64rem;
+  --spacing-sxl: 80rem;
+  --spacing-s2xl: 96rem;
+
+  --breakpoint-xs: 29rem;
+
+  --color-base: var(--bg-base-100);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  body {
+    @apply bg-background;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans leading-normal font-normal;
+  }
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+  h4 {
+    @apply text-2xl;
+  }
+  h5 {
+    @apply text-xl;
+  }
+  .bg-primary * {
+    @apply text-primary-content;
+  }
+  .bg-secondary * {
+    @apply text-secondary-content;
+  }
+  .bg-accent * {
+    @apply text-accent-content;
+  }
+  .bg-neutral * {
+    @apply text-neutral-content;
+  }
+  .bg-info * {
+    @apply text-info-content;
+  }
+  .bg-success * {
+    @apply text-success-content;
+  }
+  .bg-warning * {
+    @apply text-warning-content;
+  }
+  .bg-error * {
+    @apply text-error-content;
+  }
+}
+
+@utility bb {
+  @apply border border-red-600 sm:border-blue-600 md:border-green-600 lg:border-indigo-600 xl:border-pink-600;
+}
+@utility bb2 {
+  @apply border border-green-600 sm:border-red-600 md:border-blue-600 lg:border-pink-600 xl:border-indigo-600;
+}
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+/* Plugins */
+@plugin 'daisyui' {
+  root: ':root';
+  include: button;
+  logs: true;
+}
+
+/* Every dark theme color for easy customization */
+@plugin 'daisyui/theme' {
+  name: 'dark';
+  default: false;
+  prefersdark: true;
+  color-scheme: 'dark';
+  --color-base-100: oklch(21.15% 0.012 254.09);
+  --color-base-200: oklch(23.26% 0.014 253.1);
+  --color-base-300: oklch(25.33% 0.016 252.42);
+  --color-base-content: oklch(97.807% 0.029 256.847);
+  --color-primary: oklch(86.133% 0.141 139.549);
+  --color-primary-content: oklch(17.226% 0.028 139.549);
+  --color-secondary: oklch(73.375% 0.165 35.353);
+  --color-secondary-content: oklch(14.675% 0.033 35.353);
+  --color-accent: oklch(74.229% 0.133 311.379);
+  --color-accent-content: oklch(14.845% 0.026 311.379);
+  --color-neutral: oklch(24.731% 0.02 264.094);
+  --color-neutral-content: oklch(82.901% 0.031 222.959);
+  --color-info: oklch(86.078% 0.142 206.182);
+  --color-info-content: oklch(17.215% 0.028 206.182);
+  --color-success: oklch(86.171% 0.142 166.534);
+  --color-success-content: oklch(17.234% 0.028 166.534);
+  --color-warning: oklch(86.163% 0.142 94.818);
+  --color-warning-content: oklch(17.232% 0.028 94.818);
+  --color-error: oklch(82.418% 0.099 33.756);
+  --color-error-content: oklch(16.483% 0.019 33.756);
+  --color-border: color-mix(in oklch, var(--color-base-300) 70%, white 30%);
+  --color-input: color-mix(
+    in oklch,
+    currentColor 10%,
+    var(--color-base-300) 50%
+  );
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Every light theme color for easy customization */
+@plugin 'daisyui/theme' {
+  name: 'light';
+  default: false;
+  prefersdark: false;
+  color-scheme: 'light';
+  --color-base-100: oklch(97.788% 0.004 56.375);
+  --color-base-200: oklch(93.982% 0.007 61.449);
+  --color-base-300: oklch(91.586% 0.006 53.44);
+  --color-base-content: oklch(23.574% 0.066 313.189);
+  --color-primary: oklch(90% 0.063 306.703);
+  --color-primary-content: oklch(49% 0.265 301.924);
+  --color-secondary: oklch(89% 0.058 10.001);
+  --color-secondary-content: oklch(51% 0.222 16.935);
+  --color-accent: oklch(90% 0.093 164.15);
+  --color-accent-content: oklch(50% 0.118 165.612);
+  --color-neutral: oklch(55% 0.046 257.417);
+  --color-neutral-content: oklch(92% 0.013 255.508);
+  --color-info: oklch(86% 0.127 207.078);
+  --color-info-content: oklch(52% 0.105 223.128);
+  --color-success: oklch(87% 0.15 154.449);
+  --color-success-content: oklch(52% 0.154 150.069);
+  --color-warning: oklch(83% 0.128 66.29);
+  --color-warning-content: oklch(55% 0.195 38.402);
+  --color-error: oklch(80% 0.114 19.571);
+  --color-error-content: oklch(50% 0.213 27.518);
+  --color-border: color-mix(in oklch, var(--color-base-300) 70%, black 30%);
+  --color-input: color-mix(
+    in oklch,
+    currentColor 10%,
+    var(--color-base-100) 50%
+  );
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 2px;
+  --depth: 1;
+  --noise: 0;
+}
