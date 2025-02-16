@@ -20,6 +20,7 @@ updates:
     target-branch: 'daisyui' # Default branch for updates
     allow:
       - dependency-type: 'all'
+
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
@@ -27,6 +28,7 @@ updates:
     target-branch: 'shadcn' # Default branch for updates
     allow:
       - dependency-type: 'all'
+
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
