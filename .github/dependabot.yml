@@ -10,29 +10,77 @@ updates:
     schedule:
       interval: 'daily' # How often to check for updates
     target-branch: 'main' # Default branch for updates
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: '-'
+    commit-message:
+      prefix: 'chore(deps)'
+    rebase-strategy: 'enabled'
     allow:
-      - dependency-type: 'all'
+      - dependency-type: 'direct'
+      - dependency-type: 'development'
+    reviewers:
+      - 'PaulHaze'
+    labels:
+      - 'dependencies'
+      - 'automerge'
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'daily' # How often to check for updates
     target-branch: 'daisyui' # Default branch for updates
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: '-'
+    commit-message:
+      prefix: 'chore(deps)'
+    rebase-strategy: 'enabled'
     allow:
-      - dependency-type: 'all'
+      - dependency-type: 'direct'
+      - dependency-type: 'development'
+    reviewers:
+      - 'PaulHaze'
+    labels:
+      - 'dependencies'
+      - 'automerge'
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'daily' # How often to check for updates
     target-branch: 'shadcn' # Default branch for updates
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: '-'
+    commit-message:
+      prefix: 'chore(deps)'
+    rebase-strategy: 'enabled'
     allow:
-      - dependency-type: 'all'
+      - dependency-type: 'direct'
+      - dependency-type: 'development'
+    reviewers:
+      - 'PaulHaze'
+    labels:
+      - 'dependencies'
+      - 'automerge'
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'daily' # How often to check for updates
     target-branch: 'testing' # Default branch for updates
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: '-'
+    commit-message:
+      prefix: 'chore(deps)'
+    rebase-strategy: 'enabled'
     allow:
-      - dependency-type: 'all'
+      - dependency-type: 'direct'
+      - dependency-type: 'development'
+    reviewers:
+      - 'PaulHaze'
+    labels:
+      - 'dependencies'
+      - 'automerge'
