@@ -8,9 +8,9 @@ updates:
   - package-ecosystem: 'npm' # or 'pip', 'go', 'maven', etc.
     directory: '/' # Root directory where dependencies are located
     schedule:
-      interval: 'daily' # How often to check for updates
+      interval: 'weekly' # How often to check for updates
     target-branch: 'main' # Default branch for updates
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 25
     pull-request-branch-name:
       separator: '-'
     commit-message:
@@ -27,7 +27,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'daily' # How often to check for updates
+      interval: 'weekly' # How often to check for updates
     target-branch: 'daisyui' # Default branch for updates
     open-pull-requests-limit: 10
     pull-request-branch-name:
@@ -46,7 +46,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'daily' # How often to check for updates
+      interval: 'weekly' # How often to check for updates
     target-branch: 'shadcn' # Default branch for updates
     open-pull-requests-limit: 10
     pull-request-branch-name:
@@ -65,7 +65,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'daily' # How often to check for updates
+      interval: 'weekly' # How often to check for updates
     target-branch: 'testing' # Default branch for updates
     open-pull-requests-limit: 10
     pull-request-branch-name:
