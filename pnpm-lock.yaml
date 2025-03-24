@@ -74,7 +74,7 @@ importers:
         version: 0.6.11(prettier@3.5.3)
       tailwindcss:
         specifier: ^4.0.8
-        version: 4.0.14
+        version: 4.0.15
       typescript:
         specifier: ^5.7.3
         version: 5.8.2
@@ -1866,6 +1866,9 @@ packages:
 
   tailwindcss@4.0.14:
     resolution: {integrity: sha512-92YT2dpt671tFiHH/e1ok9D987N9fHD5VWoly1CdPD/Cd1HMglvZwP3nx2yTj2lbXDAHt8QssZkxTLCCTNL+xw==}
+
+  tailwindcss@4.0.15:
+    resolution: {integrity: sha512-6ZMg+hHdMJpjpeCCFasX7K+U615U9D+7k5/cDK/iRwl6GptF24+I/AbKgOnXhVKePzrEyIXutLv36n4cRsq3Sg==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -3903,6 +3906,8 @@ snapshots:
   tailwind-merge@3.0.2: {}
 
   tailwindcss@4.0.14: {}
+
+  tailwindcss@4.0.15: {}
 
   tapable@2.2.1: {}
 
