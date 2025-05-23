@@ -25,7 +25,7 @@ importers:
         version: 19.0.0(react@19.0.0)
       tailwind-merge:
         specifier: ^3.0.1
-        version: 3.0.1
+        version: 3.3.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -1922,8 +1922,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  tailwind-merge@3.0.1:
-    resolution: {integrity: sha512-AvzE8FmSoXC7nC+oU5GlQJbip2UO7tmOhOfQyOmPhrStOGXHU08j8mZEHZ4BmCqY5dWTCo4ClWkNyRNx1wpT0g==}
+  tailwind-merge@3.3.0:
+    resolution: {integrity: sha512-fyW/pEfcQSiigd5SNn0nApUOxx0zB/dm6UDU/rEwc2c3sX2smWUNbapHv+QRqLGVp9GWX3THIa7MUGPo+YkDzQ==}
 
   tailwindcss@4.0.8:
     resolution: {integrity: sha512-Me7N5CKR+D2A1xdWA5t5+kjjT7bwnxZOE6/yDI/ixJdJokszsn2n++mdU5yJwrsTpqFX2B9ZNMBJDwcqk9C9lw==}
@@ -4088,7 +4088,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  tailwind-merge@3.0.1: {}
+  tailwind-merge@3.3.0: {}
 
   tailwindcss@4.0.8: {}
 
