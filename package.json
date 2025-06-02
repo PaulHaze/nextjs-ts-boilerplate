@@ -27,7 +27,7 @@
     "@types/node": "^22.15.21",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
-    "daisyui": "5.0.37",
+    "daisyui": "5.0.43",
     "eslint": "^9.27.0",
     "eslint-config-next": "^15.1.8",
     "eslint-config-prettier": "^10.1.5",
