@@ -1,3 +1,5 @@
+# Fromn Qwen
+
 name: Dependabot Auto-Merge
 on:
   pull_request:
@@ -15,8 +17,16 @@ jobs:
       contents: write
     steps:
       - name: Enable auto-merge for Dependabot PRs
-        uses: peter-evans/enable-pull-request-automerge@v3
+        uses: github-script@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ github.event.pull_request.number }}
-          merge-method: squash
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              auto_merge: {
+                enabled: true,
+                merge_method: 'squash'
+              }
+            })
