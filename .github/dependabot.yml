@@ -5,90 +5,114 @@
 
 version: 2
 updates:
-  - package-ecosystem: 'npm' # or 'pip', 'go', 'maven', etc.
-    directory: '/' # Root directory where dependencies are located
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: 'weekly' # How often to check for updates
-    target-branch: 'main' # Default branch for updates
+      interval: 'weekly'
+      day: 'monday' # Specify day to make it more predictable
+      time: '09:00' # Specify time
+      timezone: 'UTC'
+    target-branch: 'main'
     open-pull-requests-limit: 25
     pull-request-branch-name:
       separator: '-'
     commit-message:
       prefix: 'chore(deps)'
+      include: 'scope' # Better commit messages
     rebase-strategy: 'auto'
     allow:
       - dependency-type: 'direct'
       - dependency-type: 'development'
-    versioning-strategy: increase-if-necessary
+    versioning-strategy: 'increase-if-necessary'
     ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
       - 'automerge'
+    reviewers:
+      - 'PaulHaze' # Add yourself as reviewer for visibility
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly' # How often to check for updates
-    target-branch: 'daisyui' # Default branch for updates
+      interval: 'weekly'
+      day: 'tuesday' # Stagger the days to avoid conflicts
+      time: '09:00'
+      timezone: 'UTC'
+    target-branch: 'daisyui'
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: '-'
     commit-message:
       prefix: 'chore(deps)'
+      include: 'scope'
     rebase-strategy: 'auto'
     allow:
       - dependency-type: 'direct'
       - dependency-type: 'development'
-    versioning-strategy: increase-if-necessary
+    versioning-strategy: 'increase-if-necessary'
     ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
       - 'automerge'
+    reviewers:
+      - 'PaulHaze'
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly' # How often to check for updates
-    target-branch: 'shadcn' # Default branch for updates
+      interval: 'weekly'
+      day: 'wednesday'
+      time: '09:00'
+      timezone: 'UTC'
+    target-branch: 'shadcn'
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: '-'
     commit-message:
       prefix: 'chore(deps)'
+      include: 'scope'
     rebase-strategy: 'auto'
     allow:
       - dependency-type: 'direct'
       - dependency-type: 'development'
-    versioning-strategy: increase-if-necessary
+    versioning-strategy: 'increase-if-necessary'
     ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
       - 'automerge'
+    reviewers:
+      - 'PaulHaze'
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly' # How often to check for updates
-    target-branch: 'testing' # Default branch for updates
+      interval: 'weekly'
+      day: 'thursday'
+      time: '09:00'
+      timezone: 'UTC'
+    target-branch: 'testing'
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: '-'
     commit-message:
       prefix: 'chore(deps)'
+      include: 'scope'
     rebase-strategy: 'auto'
     allow:
       - dependency-type: 'direct'
       - dependency-type: 'development'
-    versioning-strategy: increase-if-necessary
+    versioning-strategy: 'increase-if-necessary'
     ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
       - 'automerge'
+    reviewers:
+      - 'PaulHaze'
