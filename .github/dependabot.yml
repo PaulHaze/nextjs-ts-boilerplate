@@ -29,15 +29,12 @@ updates:
         update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
-      - 'automerge'
-    reviewers:
-      - 'PaulHaze' # Add yourself as reviewer for visibility
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
-      day: 'tuesday' # Stagger the days to avoid conflicts
+      day: 'tuesday'
       time: '09:00'
       timezone: 'UTC'
     target-branch: 'daisyui'
@@ -57,9 +54,6 @@ updates:
         update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
-      - 'automerge'
-    reviewers:
-      - 'PaulHaze'
 
   - package-ecosystem: 'npm'
     directory: '/'
@@ -85,9 +79,6 @@ updates:
         update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
-      - 'automerge'
-    reviewers:
-      - 'PaulHaze'
 
   - package-ecosystem: 'npm'
     directory: '/'
@@ -113,6 +104,3 @@ updates:
         update-types: ['version-update:semver-major']
     labels:
       - 'dependencies'
-      - 'automerge'
-    reviewers:
-      - 'PaulHaze'

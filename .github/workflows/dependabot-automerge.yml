@@ -1,94 +1,37 @@
 name: Dependabot Auto-Merge
+
+# Runs on a schedule from main branch, so it works for PRs targeting ANY branch
+# (daisyui, shadcn, testing, main) without needing the workflow on each branch.
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - labeled
+  schedule:
+    - cron: '0 12 * * 1-5' # Noon UTC, weekdays
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
   auto-merge:
-    if: github.actor == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'automerge')
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
     steps:
-      - name: Check if PR is for minor/patch updates only
-        id: check_update_type
-        uses: actions/github-script@v7
-        with:
-          result-encoding: string
-          script: |
-            const title = context.payload.pull_request.title;
-            console.log('PR Title:', title);
+      - name: Merge open Dependabot PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Finding open Dependabot PRs..."
+          prs=$(gh pr list --repo ${{ github.repository }} --author "app/dependabot" --state open --json number,title --jq '.[].number')
 
-            // Look for version patterns like "1.2.3 → 2.0.0" or "from 1.2.3 to 2.0.0"
-            const versionPattern = /(?:from\s+|:\s*)(\d+)\.(\d+)\.(\d+)(?:\s+to\s+|\s*→\s*)(\d+)\.(\d+)\.(\d+)/i;
-            const match = title.match(versionPattern);
+          if [ -z "$prs" ]; then
+            echo "No open Dependabot PRs found."
+            exit 0
+          fi
 
-            if (match) {
-              const [, oldMajor, oldMinor, oldPatch, newMajor, newMinor, newPatch] = match;
-              const isMajorUpdate = parseInt(oldMajor) !== parseInt(newMajor);
-              
-              console.log(`Version change: ${oldMajor}.${oldMinor}.${oldPatch} → ${newMajor}.${newMinor}.${newPatch}`);
-              console.log('Is major update:', isMajorUpdate);
-              
-              if (isMajorUpdate) {
-                console.log('Major update detected, skipping auto-merge');
-                return 'false';
-              }
-            }
-
-            // Also check for explicit (major) indicator
-            if (title.toLowerCase().includes('(major)')) {
-              console.log('Major update indicator found, skipping auto-merge');
-              return 'false';
-            }
-
-            console.log('Minor/patch update detected, proceeding with auto-merge');
-            return 'true';
-
-      - name: Wait for status checks
-        if: steps.check_update_type.outputs.result == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { owner, repo } = context.repo;
-            const { number } = context.payload.pull_request;
-
-            // Wait up to 5 minutes for status checks
-            const maxWaitTime = 5 * 60 * 1000; // 5 minutes
-            const checkInterval = 30 * 1000; // 30 seconds
-            const startTime = Date.now();
-
-            while (Date.now() - startTime < maxWaitTime) {
-              const { data: pr } = await github.rest.pulls.get({
-                owner,
-                repo,
-                pull_number: number
-              });
-              
-              if (pr.mergeable_state === 'clean') {
-                console.log('All checks passed, proceeding with merge');
-                return;
-              } else if (pr.mergeable_state === 'unstable' || pr.mergeable_state === 'dirty') {
-                console.log('Checks failed or conflicts detected');
-                core.setFailed('Cannot auto-merge due to failed checks or conflicts');
-                return;
-              }
-              
-              console.log(`Current mergeable state: ${pr.mergeable_state}, waiting...`);
-              await new Promise(resolve => setTimeout(resolve, checkInterval));
-            }
-
-            console.log('Timeout waiting for status checks');
-            core.setFailed('Timeout waiting for status checks to complete');
-
-      - name: Enable auto-merge for Dependabot PRs
-        if: steps.check_update_type.outputs.result == 'true'
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ github.event.pull_request.number }}
-          merge-method: squash
+          for pr in $prs; do
+            echo "Attempting to merge PR #$pr..."
+            if gh pr merge "$pr" --repo ${{ github.repository }} --squash --delete-branch; then
+              echo "Successfully merged PR #$pr"
+            else
+              echo "Failed to merge PR #$pr (may have conflicts), skipping..."
+            fi
+          done
